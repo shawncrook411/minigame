@@ -12,22 +12,22 @@ Score.init(
       primaryKey: true,
     },
     tictactoe_win: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
     },
     tictactoe_loss: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
     },
     snake_win: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
     },
     snake_loss: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
     },
     connect4_win: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
     },
     connect4_loss: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
     },
     user_id: {
       type: DataTypes.INTEGER,
