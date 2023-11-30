@@ -1,3 +1,4 @@
+
 class Game {
     constructor(options) {
         this.options = options;
@@ -9,6 +10,9 @@ class Game {
         response = "response object";
         return response;
     }
+
+
+
 }
     
 class Options {

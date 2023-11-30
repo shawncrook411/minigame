@@ -1,5 +1,7 @@
 const weighted = require("weighted");
 const { Game, Options, Square } = require('./game')
+const { snakeWeights } = require('../utils/random')
+
 
 class Snake extends Game {
     constructor(options) {
@@ -53,7 +55,6 @@ class Snake extends Game {
             }
             response.board.push(status_row)
         }
-        console.table(response.board)
         return response
     }
 
@@ -93,6 +94,14 @@ class Snake extends Game {
                     }
             }
         }
+    }
+
+    seed(){        
+        let apple = snakeWeights(this.options, this.position)
+
+    }
+    
+
     }
    
     // apple() {
