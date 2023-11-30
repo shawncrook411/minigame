@@ -9,5 +9,5 @@ testGame.respond()
 
 testGame.move(2)
 
-testGame.respond()
+console.log(testGame.respond())
 

@@ -43,12 +43,12 @@ class Snake extends Game {
             score: this.score
         };
 
-        for (let i = 0; i < this.X; i++)
+        for (let row of this.position)
         {
             let status_row = []
-            for (let j = 0; j < this.Y; j++)
+            for (let square of row)
             {
-                let status_char = this.position[i][j].status
+                let status_char = square.status
                 status_row.push(status_char)
             }
             response.board.push(status_row)
