@@ -25,7 +25,8 @@ class Options {
 
 class Square {
   constructor(x, y, status) {
-    this.position = {x: x, y: y};
+    this.x = x, 
+    this.y = y;
     this.status = 0;
   }
 }

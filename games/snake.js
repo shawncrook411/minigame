@@ -8,11 +8,18 @@ class Snake extends Game {
         super(options)
         this.X = options.sizeX; 
         this.Y = options.sizeY;
-        this.snake = {x: 0, y: 0} //Will be stored as an array of coordinates for where the head is
-        this.size = 1
+        this.head = {x: 1, y: 1} //Will be stored as an array of coordinates for where the head is
+        this.size = 10 //Default starting size is 3
         this.score = 0
+        this.direction = 2 
 
         this.reset() 
+    }
+
+    table() {console.table(this.respond().board)}
+
+    terminate() { 
+        //Implement terminate
     }
     
     //Initialize new position
@@ -27,7 +34,7 @@ class Snake extends Game {
             }
             this.position.push(row)
         }
-        this.position[0][0].status = 1
+        this.position[0][0].status = this.size
         // this.writeBoard()
     }
 
@@ -58,42 +65,83 @@ class Snake extends Game {
         return response
     }
 
-    move(direction) {
+    move(direction, test) {
         //1 = UP        //2 = RIGHT        //3 = DOWN        //4 = LEFT
+        if (direction) this.direction = direction
+        else console.log(`Continued moving ${this.direction}`)
+
         let matrix
-        switch (direction) {
+        switch (this.direction) {
             case 1:
-                matrix = { x: 0, y:1 }
+            case 'UP':
+                matrix = { x: 0, y:-1 }
+                this.direction = 1
                 break
             case 2:
+            case 'RIGHT':
                 matrix = { x: 1, y:0 }
+                this.direction = 2
                 break
             case 3:
-                matrix = { x: 0, y:-1}
+            case 'DOWN':
+                matrix = { x: 0, y:1}
+                this.direction = 3
                 break
             case 4:
+            case 'LEFT':
                 matrix = { x:-1, y:0 }
+                this.direction = 4
                 break
+        }
 
-            default :
-                console.log('Invalid Direction Error')
-                break
+       
+        //Set check square 
+        let check = {x: this.head.x + matrix.x, 
+                     y: this.head.y + matrix.y}
+
+        //Checks for collision into wall / out-of-bounds
+        //Cant use next reference in case index fails
+        if (    check.x > this.X ||
+                check.y > this.Y ||
+                check.x < 1 ||
+                check.y < 1)
+        {
+            console.log('OUT OF BOUNDS! Snake died')
+            this.terminate()
+            return
+        }
+
+        let next = this.position[this.head.y + matrix.y - 1][this.head.x + matrix.x - 1]
+
+        //Checks if colliding with itself
+        if(next.status > 1) {
+            console.log('COLLIDED WITH SELF! Snake died')
+            this.terminate()
+            return
+        }
+
+        //Checks the status of the of square to see if it contains an Apple before the snake moves
+        //If eating apple, increase size
+        if(next.status === -1) {
+            this.size++
+            this.seed()
         }
 
         checkSquares: for(let row of this.position){
             for(let place of row){
-                //Deprecates all squares by one, will remove the furthest tail of the snake
-                if (place.status > 0) place.status--
-
-                if (place.position.x == this.snake.x + matrix.x && 
-                    place.position.y == this.snake.y + matrix.y){
-                        place.status = this.size
-                        this.snake.x += matrix.x
-                        this.snake.y += matrix.y
-                        break checkSquares
-                    }
+                //Deprecates all snakebody by one, will remove the furthest tail of the snake unless eating
+                if (place.status > 0 && next.status != -1) place.status--                           
+                
+                //Sets the square that the head is moving to the current size 
+                if (place.x == next.x && place.y == next.y){
+                    console.log(`Successfully moved to: ${check.x-1}, ${check.y-1}`)                         
+                    place.status = this.size
+                }
             }
         }
+
+        this.head = check
+        this.table()
     }
 
     seed(){        
@@ -106,7 +154,15 @@ class Snake extends Game {
         // -1 adjustment because coord's are 1-indexed while array's are 0-indexed
         this.position[apple.y -1 ][apple.x -1].status = -1       
         
-    }   
+        this.table()
+    }
+    
+    forceSeed(square){
+        this.position[square.y - 1][square.x -1].status = -1
+        console.log(`Apple placed at: ${square.x} , ${square.y}`)
+
+        this.table()
+    }
    
 
 }

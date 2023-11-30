@@ -1,17 +1,36 @@
 const { Snake } = require('./games/snake')
 const { Game, Options, Square } = require('./games/game')
 
+var startSnake = function(){
+    let options = new Options(5, 5)
+    return new Snake(options)
+}
 
-let options = new Options(5, 5) 
+const test = startSnake()
 
-const testGame = new Snake(options)
+test.table()
 
-testGame.respond()
+test.move('DOWN')
+test.move()
+test.move()
+test.move()
+test.move('RIGHT')
+test.move('UP')
+test.move('LEFT')
 
-testGame.move(2)
-
-testGame.seed()
-
-console.table(testGame.respond().board)
 
 
+
+
+
+
+
+//METHODS
+
+//snake.move(4)                     moves right
+//snake.move()                      moves the last direction
+//snake.seed()                      places a random apple
+//snake.forceSeed( {x: x, y: y})    places an apple at the square
+//snake.table()                     displays the current position
+//snake.respond()                   returns a response object for HTTP
+//snake.reset()                     creates blank game
