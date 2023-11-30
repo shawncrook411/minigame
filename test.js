@@ -10,6 +10,8 @@ testGame.respond()
 
 testGame.move(2)
 
-testGame.testWeights()
+testGame.seed()
+
+console.table(testGame.respond().board)
 
 

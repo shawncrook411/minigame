@@ -97,16 +97,17 @@ class Snake extends Game {
     }
 
     seed(){        
+        //Returns a random weighted empty square
         let apple = snakeWeights(this.options, this.position)
+        //Sets the status to -1 (indicated it has an apple)
 
-    }
-    
+        console.log(`Apple placed at: ${apple.x} , ${apple.y}`)
 
-    }
+        // -1 adjustment because coord's are 1-indexed while array's are 0-indexed
+        this.position[apple.y -1 ][apple.x -1].status = -1       
+        
+    }   
    
-    // apple() {
-    //     console.log('apple')
-    // }
 
 }
 
