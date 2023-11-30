@@ -1,12 +1,14 @@
-const express = require('express');
+const app = require('express').Router();
 
-// Imported modular routes 
+// Imported modular routes
+const contactRouter = require('./contact'); 
 const homeRouter = require('./home');
+const lbRouter = require('./leaderboard');
 const gamesRouter = require('./minigames');
 
-const app = express();
-
+app.use('/contact', contactRouter);
 app.use('/home', homeRouter);
+app.use('/leaderboard', lbRouter);
 app.use('/minigames', gamesRouter);
 
 
