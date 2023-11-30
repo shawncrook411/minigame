@@ -16,10 +16,11 @@ class Game {
 }
     
 class Options {
-    constructor(sizeX, sizeY,)
+    constructor(sizeX, sizeY, dev)
     {
         this.sizeX = sizeX
         this.sizeY = sizeY
+        this.dev = dev
     }
 }
 

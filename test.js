@@ -2,13 +2,11 @@ const { Snake } = require('./games/snake')
 const { Game, Options, Square } = require('./games/game')
 
 var startSnake = function(){
-    let options = new Options(5, 5)
+    let options = new Options(5, 5, true)
     return new Snake(options)
 }
 
 const test = startSnake()
-
-test.table()
 
 test.move('DOWN')
 test.move()
@@ -16,6 +14,9 @@ test.move()
 test.move()
 test.move('RIGHT')
 test.move('UP')
+test.move()
+test.move()
+test.move()
 test.move('LEFT')
 
 
