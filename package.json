@@ -18,6 +18,7 @@
     "express-session": "^1.17.3",
     "lint": "^0.8.19",
     "mysql2": "^3.6.5",
-    "sequelize": "^6.35.1"
+    "sequelize": "^6.35.1",
+    "weighted": "^1.0.0"
   }
 }
