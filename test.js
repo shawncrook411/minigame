@@ -19,13 +19,6 @@ test.move()
 test.move()
 test.move('LEFT')
 
-
-
-
-
-
-
-
 //METHODS
 
 //snake.move(4)                     moves right

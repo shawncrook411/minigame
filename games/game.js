@@ -10,9 +10,6 @@ class Game {
         response = "response object";
         return response;
     }
-
-
-
 }
     
 class Options {
@@ -31,7 +28,5 @@ class Square {
     this.status = 0;
   }
 }
-
-
 
 module.exports = { Game, Options, Square }

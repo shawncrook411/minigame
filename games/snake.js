@@ -9,7 +9,7 @@ class Snake extends Game {
         this.X = options.sizeX; 
         this.Y = options.sizeY;
         this.active = true
-        this.result = 0
+        this.result = 0 //0 : In progress, 1 : Win, -1: Loss
         this.head = {x: 1, y: 1} //Will be stored as an array of coordinates for where the head is
         this.size = 10 //Default starting size is 3
         this.score = 0
@@ -59,7 +59,8 @@ class Snake extends Game {
             options: this.options,
             board: [],
             score: this.score,
-            active: this.active
+            active: this.active,
+            result: this.result
         };
 
         for (let row of this.position)
