@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "npm run test",
-    "start": "node server.js"
+    "start": "node server.js",
+    "seed": "node seeds/index.js"
   },
   "keywords": [],
   "author": "",
