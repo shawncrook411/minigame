@@ -1,0 +1,1 @@
+const Snake = require('../games/snake')

@@ -1,8 +1,6 @@
 const router = require('express').Router();
 // const { v4: uuidv4 } = require('uuid');
 
-
-
 // GET ROUTES
 router.get('/', async (req, res) => {
     try{
