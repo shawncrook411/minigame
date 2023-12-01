@@ -10,16 +10,14 @@ class Game {
         response = "response object";
         return response;
     }
-
-
-
 }
     
 class Options {
-    constructor(sizeX, sizeY,)
+    constructor(sizeX, sizeY, dev)
     {
         this.sizeX = sizeX
         this.sizeY = sizeY
+        this.dev = dev
     }
 }
 
@@ -30,7 +28,5 @@ class Square {
     this.status = 0;
   }
 }
-
-
 
 module.exports = { Game, Options, Square }
