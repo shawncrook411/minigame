@@ -1,8 +1,9 @@
 <main>
     <p>Welcome to Super Basic Minigames - Your Ultimate Gaming Experience!</p>
 
-    {{#if currentUser}}
+    {{#if loggedIn}}
         <p>Hello, {{ currentUser }}! <a href="#">Logout</a></p>
+        <script src='/js/logout.js'></script>
     {{else}}
         <form id="loginForm">
             <label for="username">Username:</label>
@@ -11,7 +12,9 @@
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
 
-            <button type="button" onclick="login()">Login</button>
+            <button type="submit">Login</button>
         </form>
+        <script src='/js/login.js'></script>
     {{/if}}
+
 </main>
