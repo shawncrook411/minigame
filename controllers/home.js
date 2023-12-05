@@ -20,6 +20,10 @@ router.get('/snake', (req, res) => {
   res.render('snake', { layout: 'main' });
 })
 
+router.get('/tic-tac-toe', (req, res) => {
+  res.render('tic-tac-toe', { layout: 'main' })
+})
+
 // app.get('/login', (req, res) =>
 //   res.sendFile(path.join(__dirname, 'public/pages/login.html'))
 // );

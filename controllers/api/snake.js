@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const Snake = require('../../public/games/snake')
+const Snake = require('../../public/games/snake/game.js')
 const { snakeWeights } = require('../../utils/random')
 
 router.put('/newApple', (req, res) => {
