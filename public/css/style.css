@@ -137,14 +137,15 @@ footer {
   justify-content: center;
 }
 
-.square::after{   
+/* Used for testing values to easily see them display */
+/* .square::after{   
   position: absolute;
   top: -3px;
   left: 0px;
   content: attr(data-status);
   font-size: 20px;
   color: yellow;
-}
+} */
 
 .snake{
   width: 80px;
@@ -156,4 +157,8 @@ footer {
 
 .head{
   background-color:blueviolet;
+}
+
+.apple{
+  background-color: yellow;
 }

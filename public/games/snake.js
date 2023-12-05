@@ -39,7 +39,7 @@ class Snake extends Game {
         this.active = true
         this.result = 0 //0 : In progress, 1 : Win, -1: Loss
         this.head = {x: 1, y: 1} //Will be stored as an array of coordinates for where the head is
-        this.size = 10 //Default starting size is 3
+        this.size = options.size //Default starting size is 3
         this.score = 0
         this.direction = 2
 
@@ -47,10 +47,13 @@ class Snake extends Game {
         this.display()
     }
 
-    table() {console.table(this.respond().board)}
+    table() {
+        // console.table(this.respond().board)
+    }
    
-    terminate() { 
+    terminate(cause) { 
         this.active = false
+        this.termination = cause
         console.log('FINAL POSITION')
         
         this.table()
@@ -109,30 +112,32 @@ class Snake extends Game {
         if (!this.active) return
 
         //1 = UP        //2 = RIGHT        //3 = DOWN        //4 = LEFT
-        if (direction) this.direction = direction
+        //This logic prevents the user from abruptly facing around. Must alternate vertical and horizontal directions
+        if (direction && this.direction % 2 != direction % 2) this.direction = direction        
         else console.log(`Continued moving ${this.direction}`)
 
+        
         let matrix
         switch (this.direction) {
             case 1:
             case 'UP':
                 matrix = { x: 0, y:-1 }
-                this.direction = 'UP'
+                this.direction = 1
                 break
             case 2:
             case 'RIGHT':
                 matrix = { x: 1, y:0 }
-                this.direction = 'RIGHT'
+                this.direction = 2
                 break
             case 3:
             case 'DOWN':
                 matrix = { x: 0, y:1}
-                this.direction = 'DOWN'
+                this.direction = 3
                 break
             case 4:
             case 'LEFT':
                 matrix = { x:-1, y:0 }
-                this.direction = 'LEFT'
+                this.direction = 4
                 break
         }
        
@@ -147,8 +152,7 @@ class Snake extends Game {
                 check.x < 1 ||
                 check.y < 1)
         {
-            console.log('OUT OF BOUNDS! Snake died')
-            this.terminate()
+            this.terminate('OUT OF BOUNDS!... Snake died')
             return this.respond()
         }
 
@@ -156,8 +160,7 @@ class Snake extends Game {
 
         //Checks if colliding with itself
         if(next.status > 1) {
-            console.log(`TRIED TO MOVE ${this.direction} & COLLIDED WITH SELF! Snake died`)
-            this.terminate()
+            this.terminate(`TRIED TO MOVE & COLLIDED WITH SELF!... Snake died`)
             return this.respond()
         }
 
@@ -188,13 +191,13 @@ class Snake extends Game {
         return this.respond()
     }
 
-    seed(){    
+    seed = async function() {    
         if (!this.active) return
-    
+        
         //Returns a random weighted empty square
-        let apple = snakeWeights(this.options, this.position)
+        const apple = await fetchApple(this)
         //Sets the status to -1 (indicated it has an apple)
-
+        
         console.log(`Apple placed at: ${apple.x} , ${apple.y}`)
 
         // -1 adjustment because coord's are 1-indexed while array's are 0-indexed
@@ -228,15 +231,21 @@ class Snake extends Game {
                 square.setAttribute('class', 'square')
 
                 let reference = this.position[i][j]
+                let status = reference.status
 
-                if (reference.status != 0) 
+                if (status > 0) 
                 {
                     square.setAttribute('class', 'snake')
                 }
 
-                if (reference.status === this.size)
+                if (status === this.size)
                 {
                     square.setAttribute('class', 'snake head')
+                }
+
+                if (status === -1)
+                {
+                    square.setAttribute('class', 'square apple')
                 }
 
                 square.setAttribute('data-status', reference.status)
@@ -245,18 +254,5 @@ class Snake extends Game {
             }
             board.appendChild(row)
         }
-
-        // for (let row of this.position)
-        // {
-        //     let status_row = []
-        //     for (let square of row)
-        //     {
-        //         let status_char = square.status
-        //         status_row.push(status_char)
-        //     }
-        //     response.board.push(status_row)
-        // }
-        // return response
     }
-
 }
