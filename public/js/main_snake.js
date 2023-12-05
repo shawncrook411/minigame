@@ -3,7 +3,7 @@ let speed = .1 //CURRENT SPEED , MAY BE CHANGED (4 fps)
 
 //Listens for key presses to send to .move method of the Snake Game
 document.onkeydown = function(e) {
-    switch (e.key) {
+    switch (e.code) {
         case "ArrowUp":
             direction = 1
             return 
@@ -13,17 +13,19 @@ document.onkeydown = function(e) {
         case "ArrowDown":
             direction = 3
             return    
-            default:
         case "ArrowLeft":
             direction = 4
-            return       
+            return      
+        case "Space":
+            startGame()
+            return
     }
 };
 
 const startGame = async function (event) {
-    event.preventDefault()
+    if (event) event.preventDefault()
     let button = startSnakeButton.remove()
-    const options = { sizeX: 15, sizeY: 15, size: 2, dev: false}
+    const options = { sizeX: 15, sizeY: 15, size: 10, dev: false}
     const snake = await new Snake(options) 
     
     const start = setInterval(

@@ -11,8 +11,7 @@
 
 .square, .snake, .apple, .head{
     width: 40px;
-    height: 40px;
-    border: black solid 1.5px;
+    height: 40px;    
     position: relative;       
     background-color: #73B9EE;
   }
@@ -36,7 +35,7 @@
   }
   
   .head{
-    background-color:blueviolet;
+    background-color:rgb(226, 64, 43);
   }
   
   .apple{
@@ -55,4 +54,30 @@
   
   #snakeStart{
     height: 50px;
+  }
+
+  .vertical_snake{
+    border-right: black solid 3px;
+    border-left: black solid 3px;
+  }
+
+  .horizontal_snake{
+    border-top: black solid 3px;
+    border-bottom: black solid 3px;
+  }
+
+  .top_border{
+    border-top: black solid
+  }
+
+  .left_border{
+    border-left: black solid 3px;
+  }
+
+  .right_border{
+    border-right: black solid 3px;
+  }
+
+  .bottom_border{
+    border-bottom: black solid 3px;
   }

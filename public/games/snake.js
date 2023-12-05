@@ -3,6 +3,8 @@ class Square {
     this.x = x, 
     this.y = y;
     this.status = 0;
+    this.snake_direction = 0
+    //0 is for NOT SNAKE //1 is UP //2 is RIGHT //3 is DOWN //4 is LEFT
   }
 }
 
@@ -17,6 +19,7 @@ class Snake {
         this.size = options.size //Default starting size is 3
         this.score = 0
         this.direction = 2
+        this.previousDirection = 2
         this.position = []
 
         this.reset() 
@@ -89,9 +92,15 @@ class Snake {
 
         //1 = UP        //2 = RIGHT        //3 = DOWN        //4 = LEFT
         //This logic prevents the user from abruptly facing around. Must alternate vertical and horizontal directions
-        if (direction && this.direction % 2 != direction % 2) this.direction = direction        
-        else console.log(`Continued moving ${this.direction}`)
+        if (direction && this.direction % 2 != direction % 2){
+          this.previousDirection = this.direction
+          this.direction = direction    
+        }       
 
+        else {
+            this.previousDirection = this.direction
+            console.log(`Continued moving ${this.direction}`)
+        }
         
         let matrix
         switch (this.direction) {
@@ -146,15 +155,21 @@ class Snake {
             this.size++
             this.seed()
         }
+        
 
         checkSquares: for(let row of this.position){
             for(let place of row){
+
+                //Sets the PREVIOUS head to the direction angles
+                if (place.status === this.size) place.snake_direction = [this.previousDirection, this.direction]
+
                 //Deprecates all snakebody by one, will remove the furthest tail of the snake unless eating
                 if (place.status > 0 && next.status != -1) place.status--                           
                 
                 //Sets the square that the head is moving to the current size 
                 if (place.x == next.x && place.y == next.y){
-                    console.log(`Successfully moved to: ${check.x-1}, ${check.y-1}`)                         
+                    console.log(`Successfully moved to: ${check.x-1}, ${check.y-1}`)                    
+                    place.snake_direction = [this.direction, this.previousDirection]           
                     place.status = this.size
                 }
             }
@@ -204,12 +219,9 @@ class Snake {
             {
                 let square = document.createElement('div')
                 square.setAttribute('id', `${j}:${i}`)
-                square.setAttribute('class', 'square')
 
                 let reference = this.position[i][j]
-                let status = reference.status
-
-                switch (status){
+                switch (reference.status){
                     case 0:
                         square.setAttribute('class', 'square')
                         break
@@ -218,16 +230,62 @@ class Snake {
                         break
                     case this.size:
                         square.setAttribute('class', 'head')
+                        square.setAttribute('data-direction', reference.snake_direction)             
                         break
                     default:
                         square.setAttribute('class', 'snake')
+                        square.setAttribute('data-direction', reference.snake_direction)           
                         break
                 }
+                
+                //Must be snake
+                if (reference.status > 0){
+                    let d = reference.snake_direction
+                    //If snake is traveling in straight line, do straight borders
+                    if (d[0] === d[1])
+                    {
+                        if (d[1] % 2) { //Traveling straight up/down (1 or 3 % 2 = 1 which evalutates to true)
+                            square.classList.add('left_border')
+                            square.classList.add('right_border')
+                        }
+                        else{ //Traveling straight left/right
+                            square.classList.add('top_border')
+                            square.classList.add('bottom_border')
+                        }
+                    }
+                    //Otherwise we need to caluclate the corners
+                    else {
+                        if (d[0] === 1) square.classList.add('top_border')
+                        if (d[0] === 2) square.classList.add('right_border')
+                        if (d[0] === 3) square.classList.add('bottom_border')
+                        if (d[0] === 4) square.classList.add('left_border')
 
-                square.setAttribute('data-status', reference.status)
+                        if (d[1] === 1) square.classList.add('bottom_border')
+                        if (d[1] === 2) square.classList.add('left_border')
+                        if (d[1] === 3) square.classList.add('top_border')
+                        if (d[1] === 4) square.classList.add('right_border')
+                    }
+
+                    if (reference.status === 1){
+                        if (d[0] === 1) square.classList.add('bottom_border')
+                        if (d[0] === 2) square.classList.add('left_border')
+                        if (d[0] === 3) square.classList.add('top_border')
+                        if (d[0] === 4) square.classList.add('right_border')
+                    }
+
+                    if (reference.status === this.size)
+                    {
+                        if (d[1] === 1) square.classList.add('top_border')
+                        if (d[1] === 2) square.classList.add('right_border')
+                        if (d[1] === 3) square.classList.add('bottom_border')
+                        if (d[1] === 4) square.classList.add('left_border')
+                    }
+                }
+             
+                square.setAttribute('data-status', reference.status) 
                 row.appendChild(square)
             }
             board.appendChild(row)
-        }
+        }        
     }
 }
