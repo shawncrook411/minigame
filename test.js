@@ -1,5 +1,5 @@
-const { Snake } = require('./games/snake')
-const { Game, Options, Square } = require('./games/game')
+const { Snake } = require('./public/games/snake')
+const { Game, Options, Square } = require('./public/games/game').default
 
 var startSnake = function(){
     let options = new Options(5, 5, true)

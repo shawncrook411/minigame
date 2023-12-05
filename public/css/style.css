@@ -111,3 +111,37 @@ footer {
 #topNavigation a {
   margin-left: 10px;
 }
+
+
+
+/* Snake Display Settings */
+.square{
+  width: 80px;
+  height: 80px;
+  border: black solid 2px;
+  position: relative;       
+  background-color: #73B9EE;
+}
+
+#snakeDisplay{
+  display: flex;
+  flex-direction: column;
+}
+
+.row{
+  display: flex;  
+}
+
+#snakeContainer{
+  display: flex;
+  justify-content: center;
+}
+
+.square::after{   
+  position: absolute;
+  top: -3px;
+  left: 0px;
+  content: attr(data-status);
+  font-size: 20px;
+  color: yellow;
+}
