@@ -3,12 +3,11 @@ const app = require("express").Router();
 // Imported modular routes
 const contactRouter = require("./contact");
 const homeRouter = require("./home");
-const lbRouter = require("./leaderboard");
-const snakeRoute = require('./snake')
+const apiRouter = require("./api/index");
 
 app.use("/contact", contactRouter);
 app.use("/", homeRouter);
-app.use("/leaderboard", lbRouter);
-app.use('/snake', snakeRoute);
+app.use("/api", apiRouter);
+
 
 module.exports = app;
