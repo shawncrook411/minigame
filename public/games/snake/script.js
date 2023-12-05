@@ -22,12 +22,20 @@ document.onkeydown = function(e) {
     }
 };
 
+
 const startGame = async function (event) {
     if (event) event.preventDefault()
     let button = startSnakeButton.remove()
-    const options = { sizeX: 15, sizeY: 15, size: 225, dev: false}
+    const options = { sizeX: 15, sizeY: 15, size: 10, dev: false}
     const snake = new Snake(options) 
     
+    const reset = function(){
+        startSnakeButton.innerHTML = 'Replay?'
+        startDiv.append(startSnakeButton)
+        sendResult(snake)
+        clearInterval(start)
+    }
+
     const start = setInterval(
         function () {  
             //Master loop
@@ -36,19 +44,13 @@ const startGame = async function (event) {
             if(snake.size > ((snake.X * snake.Y) - 1))
             {
                 snake.active === false
-                startSnakeButton.innerHTML = 'Replay?'
-                startDiv.append(startSnakeButton)
-                sendResult(snake)
                 alert("You've won!")
-                clearInterval(start)
+                reset()
             }
             
             if(!snake.active){
-                startSnakeButton.innerHTML = 'Replay?'
-                startDiv.append(startSnakeButton)
-                sendResult(snake)
                 alert(snake.termination)
-                clearInterval(start)
+                reset()
             }
         }, speed)
 }
