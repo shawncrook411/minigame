@@ -145,3 +145,15 @@ footer {
   font-size: 20px;
   color: yellow;
 }
+
+.snake{
+  width: 80px;
+  height: 80px;
+  border: black solid 2px;
+  position: relative;       
+  background-color: red;
+}
+
+.head{
+  background-color:blueviolet;
+}

@@ -228,6 +228,17 @@ class Snake extends Game {
                 square.setAttribute('class', 'square')
 
                 let reference = this.position[i][j]
+
+                if (reference.status != 0) 
+                {
+                    square.setAttribute('class', 'snake')
+                }
+
+                if (reference.status === this.size)
+                {
+                    square.setAttribute('class', 'snake head')
+                }
+
                 square.setAttribute('data-status', reference.status)
 
                 row.appendChild(square)
