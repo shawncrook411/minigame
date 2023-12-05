@@ -209,23 +209,22 @@ class Snake {
                 let reference = this.position[i][j]
                 let status = reference.status
 
-                if (status > 0) 
-                {
-                    square.setAttribute('class', 'snake')
-                }
-
-                if (status === this.size)
-                {
-                    square.setAttribute('class', 'snake head')
-                }
-
-                if (status === -1)
-                {
-                    square.setAttribute('class', 'square apple')
+                switch (status){
+                    case 0:
+                        square.setAttribute('class', 'square')
+                        break
+                    case -1:
+                        square.setAttribute('class', 'apple')
+                        break
+                    case this.size:
+                        square.setAttribute('class', 'head')
+                        break
+                    default:
+                        square.setAttribute('class', 'snake')
+                        break
                 }
 
                 square.setAttribute('data-status', reference.status)
-
                 row.appendChild(square)
             }
             board.appendChild(row)
