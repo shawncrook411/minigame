@@ -1,7 +1,35 @@
-const weighted = require("weighted");
-const { Game, Options, Square } = require('./game')
-const { snakeWeights } = require('../utils/random')
+// const weighted = require("weighted");
+// const { snakeWeights } = require('../../utils/random')
 
+class Game {
+    constructor(options) {
+        this.options = options;
+        this.board = []
+        this.position = []
+    }
+
+    respond() {
+        response = "response object";
+        return response;
+    }
+}
+    
+class Options {
+    constructor(sizeX, sizeY, dev)
+    {
+        this.sizeX = sizeX
+        this.sizeY = sizeY
+        this.dev = dev
+    }
+}
+
+class Square {
+  constructor(x, y, status) {
+    this.x = x, 
+    this.y = y;
+    this.status = 0;
+  }
+}
 
 class Snake extends Game {
     constructor(options) {
@@ -16,6 +44,7 @@ class Snake extends Game {
         this.direction = 2
 
         this.reset() 
+        this.display()
     }
 
     table() {console.table(this.respond().board)}
@@ -153,6 +182,7 @@ class Snake extends Game {
         }
 
         this.head = check
+        this.display()
 
         if(this.options.dev) this.table()
         return this.respond()
@@ -181,8 +211,41 @@ class Snake extends Game {
         if(this.options.dev) this.table()
         return this.respond()
     }
-   
+
+    display(){
+        let board = document.getElementById("snakeDisplay")
+        while (board.firstChild) board.removeChild(board.firstChild)
+
+        newRow: for(let i = 0; i < this.Y; i++)
+        {
+            let row = document.createElement('div')
+            row.setAttribute('class', 'row')
+
+            newSquare: for (let j = 0; j < this.X; j++)
+            {
+                let square = document.createElement('div')
+                square.setAttribute('id', `${j}:${i}`)
+                square.setAttribute('class', 'square')
+
+                let reference = this.position[i][j]
+                square.setAttribute('data-status', reference.status)
+
+                row.appendChild(square)
+            }
+            board.appendChild(row)
+        }
+
+        // for (let row of this.position)
+        // {
+        //     let status_row = []
+        //     for (let square of row)
+        //     {
+        //         let status_char = square.status
+        //         status_row.push(status_char)
+        //     }
+        //     response.board.push(status_row)
+        // }
+        // return response
+    }
 
 }
-
-module.exports = { Snake }
