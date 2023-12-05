@@ -27,3 +27,14 @@ var fetchApple = async function(snake) {
   const apple = await data.json()
   return apple
 }
+
+var sendResult = async function(snake) {
+  const data = await fetch('/api/snake/record',
+  {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(snake)
+  })
+}

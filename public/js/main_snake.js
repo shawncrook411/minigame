@@ -1,5 +1,5 @@
 let direction = 2 //STARTING DIRECTION -> RIGHT
-let speed = .1 //CURRENT SPEED , MAY BE CHANGED (4 fps)
+let speed = 50 //CURRENT SPEED , MAY BE CHANGED (10 fps)
 
 //Listens for key presses to send to .move method of the Snake Game
 document.onkeydown = function(e) {
@@ -25,19 +25,32 @@ document.onkeydown = function(e) {
 const startGame = async function (event) {
     if (event) event.preventDefault()
     let button = startSnakeButton.remove()
-    const options = { sizeX: 15, sizeY: 15, size: 10, dev: false}
-    const snake = await new Snake(options) 
+    const options = { sizeX: 15, sizeY: 15, size: 225, dev: false}
+    const snake = new Snake(options) 
     
     const start = setInterval(
         function () {  
+            //Master loop
             snake.move(direction)
+
+            if(snake.size > ((snake.X * snake.Y) - 1))
+            {
+                snake.active === false
+                startSnakeButton.innerHTML = 'Replay?'
+                startDiv.append(startSnakeButton)
+                sendResult(snake)
+                alert("You've won!")
+                clearInterval(start)
+            }
+            
             if(!snake.active){
                 startSnakeButton.innerHTML = 'Replay?'
                 startDiv.append(startSnakeButton)
+                sendResult(snake)
                 alert(snake.termination)
                 clearInterval(start)
             }
-        }, speed*1000)
+        }, speed)
 }
 
 const startDiv = document.querySelector('#startDiv')
