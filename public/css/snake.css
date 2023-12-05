@@ -19,6 +19,7 @@
   #snakeDisplay{
     display: flex;
     flex-direction: column;
+    
   }
   
   .row{
@@ -27,7 +28,8 @@
   
   #snakeContainer{
     display: flex;
-    justify-content: center;
+    justify-content: center;    
+    
   } 
   
   .snake{
@@ -40,6 +42,7 @@
   
   .apple{
     background-color: yellow;
+    border: black solid 3px;
   }
   
   #mainContainer{

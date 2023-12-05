@@ -237,6 +237,12 @@ class Snake {
                         square.setAttribute('data-direction', reference.snake_direction)           
                         break
                 }
+
+                if (reference.x === 0)          square.classList.add('left_border')
+                if (reference.x === this.X - 1) square.classList.add('right_border')            
+                if (reference.y === 0)          square.classList.add('top_border')       
+                if (reference.y === this.Y - 1 ) square.classList.add('bottom_border')            
+
                 
                 //Must be snake
                 if (reference.status > 0){
