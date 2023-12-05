@@ -1,13 +1,19 @@
-const router = require('express').Router();
+const router = require("express").Router();
 // const { v4: uuidv4 } = require('uuid');
 
-
-
 // GET ROUTES
-router.get('/', async (req, res) => {
-    try{
-        res.render('homepage')
-    } catch (err) { console.log(err) }
+router.get("/", async (req, res) => {
+  try {
+    if (req.session.username) {
+      res.render("homepage", {
+        currentUser: req.session.username,
+      });
+    } else {
+      res.render("homepage");
+    }
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 // app.get('/login', (req, res) =>
@@ -29,7 +35,5 @@ router.get('/', async (req, res) => {
 // app.get('*', (req, res) =>
 //   res.sendFile(path.join(__dirname, 'public/pages/404.html'))
 // );
-
-
 
 module.exports = router;

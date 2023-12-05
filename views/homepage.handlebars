@@ -1,8 +1,8 @@
 <main>
     <p>Welcome to Super Basic Minigames - Your Ultimate Gaming Experience!</p>
 
-    {{#if user}}
-        <p>Hello, {{ user }}! <a href="#">Logout</a></p>
+    {{#if currentUser}}
+        <p>Hello, {{ currentUser }}! <a href="#">Logout</a></p>
     {{else}}
         <form id="loginForm">
             <label for="username">Username:</label>
