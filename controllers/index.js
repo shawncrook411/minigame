@@ -3,7 +3,7 @@ const app = require("express").Router();
 // Imported modular routes
 const contactRouter = require("./contact");
 const homeRouter = require("./home");
-const apiRouter = require("./api/index");
+const apiRouter = require("./api");
 
 app.use("/contact", contactRouter);
 app.use("/", homeRouter);

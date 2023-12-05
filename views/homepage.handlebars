@@ -3,7 +3,6 @@
 
     {{#if loggedIn}}
         <p>Hello, {{ currentUser }}! <a href="#">Logout</a></p>
-        <script src='/js/logout.js'></script>
     {{else}}
         <form id="loginForm">
             <label for="username">Username:</label>
@@ -14,7 +13,6 @@
 
             <button type="submit">Login</button>
         </form>
-        <script src='/js/login.js'></script>
     {{/if}}
 
 </main>

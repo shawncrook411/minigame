@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { User } = require("../../models/index");
+
 router.post("/login", async (req, res) => {
   try {
     const userData = await User.findOne({
@@ -30,7 +31,7 @@ router.post("/login", async (req, res) => {
       req.session.loggedIn = true;
       res
         .status(200)
-        .json({ user: dbUserData, message: "You are now logged in!" });
+        .json({ user: userData, message: "You are now logged in!" });
     });
   } catch (err) {
     console.log(err);
