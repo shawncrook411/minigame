@@ -1,28 +1,3 @@
-// const weighted = require("weighted");
-// const { snakeWeights } = require('../../utils/random')
-
-class Game {
-    constructor(options) {
-        this.options = options;
-        this.board = []
-        this.position = []
-    }
-
-    respond() {
-        response = "response object";
-        return response;
-    }
-}
-    
-class Options {
-    constructor(sizeX, sizeY, dev)
-    {
-        this.sizeX = sizeX
-        this.sizeY = sizeY
-        this.dev = dev
-    }
-}
-
 class Square {
   constructor(x, y, status) {
     this.x = x, 
@@ -31,9 +6,9 @@ class Square {
   }
 }
 
-class Snake extends Game {
+class Snake {
     constructor(options) {
-        super(options)
+        this.options = options
         this.X = options.sizeX; 
         this.Y = options.sizeY;
         this.active = true
@@ -42,13 +17,14 @@ class Snake extends Game {
         this.size = options.size //Default starting size is 3
         this.score = 0
         this.direction = 2
+        this.position = []
 
         this.reset() 
         this.display()
     }
 
     table() {
-        // console.table(this.respond().board)
+        console.table(this.respond().board)
     }
    
     terminate(cause) { 

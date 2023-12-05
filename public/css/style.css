@@ -115,10 +115,10 @@ footer {
 
 
 /* Snake Display Settings */
-.square{
-  width: 80px;
-  height: 80px;
-  border: black solid 2px;
+.square, .snake, .apple, .head{
+  width: 40px;
+  height: 40px;
+  border: black solid 1.5px;
   position: relative;       
   background-color: #73B9EE;
 }
@@ -148,10 +148,6 @@ footer {
 } */
 
 .snake{
-  width: 80px;
-  height: 80px;
-  border: black solid 2px;
-  position: relative;       
   background-color: red;
 }
 
@@ -161,4 +157,22 @@ footer {
 
 .apple{
   background-color: yellow;
+}
+
+#startDiv{
+  
+}
+
+#mainContainer{
+  display: flex;
+  justify-content: center;
+}
+
+.bufferDiv{
+  width: 200px;
+  display:flex;
+}
+
+#snakeStart{
+  height: 50px;
 }
