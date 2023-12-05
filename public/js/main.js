@@ -1,13 +1,20 @@
 
-const options = { sizeX: 5, sizeY: 5, dev: true}
-const snake = new Snake(options)
 
+    
 
+startGame = async function () {
+    const options = { sizeX: 5, sizeY: 5, dev: true}
+    const snake = await new Snake(options)
 
-snake.move(2)
+    const start = setInterval(
+        function () {    
+        if (snake.active){
+            snake.move()
+        }
+        else {
+            clearInterval(start)
+        }}, 1500)
+}
 
-
-
-
-
+startGame()
 
