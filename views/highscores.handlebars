@@ -1,3 +1,4 @@
+<<<<<<< HEAD
     <main>
     <h1>Welcome to {{ siteName }} - Gaming Heaven!</h1>
 
@@ -34,3 +35,28 @@
         </div>
     </section>
 </main>
+=======
+<body>
+    <div class="container mt-5">
+        <h2 class="mb-4">Leaderboard</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each leaderboardData}}
+                    <tr>
+                        <th scope="row">{{@index}}</th>
+                        <td>{{username}}</td>
+                        <td>{{score}}</td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</body>
+>>>>>>> e2d237ac26cafa7adb79a9feb317d52eaa07938c

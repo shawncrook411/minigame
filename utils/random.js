@@ -1,6 +1,8 @@
 const weighted = require('weighted');
 
-var snakeWeights = function(options, position) {
+var snakeWeights = function(snake) {
+    
+    position = snake.position
 
     let weights = []
     let indexes = []
@@ -20,12 +22,12 @@ var snakeWeights = function(options, position) {
             if (square.status != 0) continue
 
             //If square is directly adjacent to edge square sets weight to 2
-            if ( square.x == 2 || square.x == options.sizeX - 1 ||
-                 square.y == 2 || square.y == options.sizeY - 1) weight = 2
+            if ( square.x == 2 || square.x == snake.X - 1 ||
+                 square.y == 2 || square.y == snake.Y - 1) weight = 2
 
             //If square is directly on side of board sets weight to 5
-            if ( square.x == 1 || square.x == options.sizeX || 
-                square.y == 1 || square.y == options.sizeY ) weight = 5 
+            if ( square.x == 1 || square.x == snake.X || 
+                square.y == 1 || square.y == snake.Y ) weight = 5 
                 
             weights.push(weight)
             indexes.push({x: x, y: y})
