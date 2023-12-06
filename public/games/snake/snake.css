@@ -1,0 +1,86 @@
+/* Used for testing values to easily see them display */
+/* .square::after{   
+  position: absolute;
+  top: -3px;
+  left: 0px;
+  content: attr(data-status);
+  font-size: 20px;
+  color: yellow;
+} */
+
+
+.square, .snake, .apple, .head{
+    width: 40px;
+    height: 40px;    
+    position: relative;       
+    background-color: #73B9EE;
+  }
+  
+  #snakeDisplay{
+    display: flex;
+    flex-direction: column;
+    
+  }
+  
+  .row{
+    display: flex;  
+  }
+  
+  #snakeContainer{
+    display: flex;
+    justify-content: center;    
+    
+  } 
+  
+  .snake{
+    background-color: red;
+  }
+  
+  .head{
+    background-color:rgb(226, 64, 43);
+  }
+  
+  .apple{
+    background-color: yellow;
+    border: black solid 3px;
+  }
+  
+  #mainContainer{
+    display: flex;
+    justify-content: center;
+  }
+  
+  .bufferDiv{
+    width: 200px;
+    display:flex;
+  }
+  
+  #snakeStart{
+    height: 50px;
+  }
+
+  .vertical_snake{
+    border-right: black solid 3px;
+    border-left: black solid 3px;
+  }
+
+  .horizontal_snake{
+    border-top: black solid 3px;
+    border-bottom: black solid 3px;
+  }
+
+  .top_border{
+    border-top: black solid
+  }
+
+  .left_border{
+    border-left: black solid 3px;
+  }
+
+  .right_border{
+    border-right: black solid 3px;
+  }
+
+  .bottom_border{
+    border-bottom: black solid 3px;
+  }
