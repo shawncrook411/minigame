@@ -1,41 +1,3 @@
-<<<<<<< HEAD
-    <main>
-    <h1>Welcome to {{ siteName }} - Gaming Heaven!</h1>
-
-    {{#if user}}
-        <p>Hello, {{ user }}! <a href="#">Logout</a></p>
-    {{else}}
-        <form id="loginForm">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-
-            <button type="submit">Login</button>
-        </form>
-    {{/if}}
-
-    <section class="leaderboard">
-        <h2>Leaderboard</h2>
-        <!-- Blank leaderboard section -->
-    </section>
-
-    <section class="game-cards">
-        <div class="game-card">
-            <h3>Snake!</h3>
-            <p>The high octane, classic game that everyone loves.</p>
-            <button onclick="playGame(1)">Play</button>
-        </div>
-
-        <div class="game-card">
-            <h3>Game 2?</h3>
-            <p>Description of Game 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <button onclick="playGame(2)">Play</button>
-        </div>
-    </section>
-</main>
-=======
 <body>
     <div class="container mt-5">
         <h2 class="mb-4">Leaderboard</h2>
@@ -48,15 +10,10 @@
                 </tr>
             </thead>
             <tbody>
-                {{#each leaderboardData}}
-                    <tr>
-                        <th scope="row">{{@index}}</th>
-                        <td>{{username}}</td>
-                        <td>{{score}}</td>
-                    </tr>
+                {{#each scores as |score|}}
+                    {{> snakeScores-info score}}
                 {{/each}}
             </tbody>
         </table>
     </div>
 </body>
->>>>>>> e2d237ac26cafa7adb79a9feb317d52eaa07938c
