@@ -145,6 +145,7 @@ class Snake {
     //If eating apple, increase size
     if (next.status === -1) {
       this.size++;
+      this.score++;
       this.seed();
     }
 
