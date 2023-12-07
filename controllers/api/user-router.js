@@ -50,7 +50,7 @@ router.post("/logout", (req, res) => {
 });
 
 //creates a new user.
-router.post("/", async (req, res) => {
+router.post("/register", async (req, res) => {
   try {
     const userData = await User.create({
       username: req.body.username,
@@ -69,4 +69,6 @@ router.post("/", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+
 module.exports = router;
