@@ -16,7 +16,6 @@ router.put("/newApple", (req, res) => {
 });
 
 router.put("/record", async (req, res) => {
-  console.log(req.body.snake_score);
   try {
     const oldScore = await Score.findOne({
       where: {
