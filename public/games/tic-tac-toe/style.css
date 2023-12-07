@@ -9,32 +9,49 @@
     align-items: center;
 }
 
-.square::after{      
+.square::after {      
     content: attr(data-status);
-    font-size: 75px;
-    color: red;
-  } 
+    font-size: 20px; /* Adjust the font size as needed */
+    color: yellow;
+} 
 
-#gameDisplay{
+#gameDisplay {
     display: flex;
     flex-direction: column;    
 }
 
-.row{
+.row {
     display: flex;  
 }
 
-#gameContainer{
+#gameContainer {
     display: flex;
     justify-content: center;    
 }
 
-#mainContainer{
+#mainContainer {
     display: flex;
     justify-content: center;
 }
 
-.bufferDiv{
+.bufferDiv {
     width: 200px;
     display:flex;
+}
+
+#tictactoeStart {
+    height: 50px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #4CAF50; /* Green background color */
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 200px 0px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Add a smooth transition effect */
 }
