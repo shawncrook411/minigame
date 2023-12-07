@@ -16,17 +16,23 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get('/snake', (req, res) => {
-  res.render('snake', { layout: 'main' });
-})
+router.get("/snake", (req, res) => {
+  res.render("snake", { layout: "main" });
+});
 
-router.get('/tic-tac-toe', (req, res) => {
-  res.render('tic-tac-toe', { layout: 'main' })
-})
+router.get("/tic-tac-toe", (req, res) => {
+  res.render("tic-tac-toe", { layout: "main" });
+});
 
-// app.get('/login', (req, res) =>
-//   res.sendFile(path.join(__dirname, 'public/pages/login.html'))
-// );
+router.get("/leaderboard");
+
+router.get("/login", (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect("/");
+    return;
+  }
+  res.render("login");
+});
 
 // app.get('/minigames', (req, res) =>
 //   res.sendFile(path.join(__dirname, '/public/pages/minigames.html'))
