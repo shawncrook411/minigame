@@ -11,9 +11,9 @@
 
 .square::after {      
     content: attr(data-status);
-    font-size: 20px; /* Adjust the font size as needed */
+    font-size: 60px; 
     color: yellow;
-} 
+}
 
 #gameDisplay {
     display: flex;
@@ -39,7 +39,7 @@
     display:flex;
 }
 
-#tictactoeStart {
+#gameStart {
     height: 50px;
     width: 200px;
     display: flex;
