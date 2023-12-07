@@ -1,12 +1,10 @@
-
-
-
 const startGame = async function (event) {
     event.preventDefault()
-    let button = startButton.remove()
-    const options = { length: 3, dev: true }
 
-    const game = new Tic_Tac_Toe(options)
+    let button = startButton.remove()
+    const options = { height: 5, width: 7, dev: true}
+
+    const game = new Connect4(options)    
 
     const reset = function(){
         startButton.innerHTML = 'Replay?'
@@ -20,6 +18,10 @@ const startGame = async function (event) {
         }
     }
 
+    if(!game.active) {
+        alert(game.termination)
+        reset(game.score)
+    }
 }
 
 const startDiv = document.querySelector('#startDiv')
