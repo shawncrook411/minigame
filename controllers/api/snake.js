@@ -19,17 +19,24 @@ router.put("/record", async (req, res) => {
   try {
     const oldScore = await Score.findOne({
       where: {
-        user_id: req.session.id,
+        user_id: req.session.user_id,
       },
     });
-    console.log(oldScore, req.body);
-    if (oldScore < req.body) {
+    if (!oldScore){
+      const newScore = await Score.create({
+        user_id: req.session.user_id,
+        snake_score: req.body.snake_score
+      })
+      console.log(newScore)
+      var scoreData = newScore
+    }
+    else if (oldScore.snake_score < req.body.snake_score) {
       var scoreData = await Score.update(
         {
           snake_score: req.body.snake_score,
         },
         {
-          where: { user_id: req.session.id },
+          where: { user_id: req.session.user_id },
         }
       );
     } else {
