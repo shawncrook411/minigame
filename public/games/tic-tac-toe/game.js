@@ -36,75 +36,57 @@ class Tic_Tac_Toe{
             }
             this.position.push(row)
         }
-    }
+    }   
 
-    check() {
-        if (this.checkVERTICAL()) return true
-        if (this.checkHORIZONTAL()) return true        
-        if (this.checkDIAGNOL()) return true
-        return false
-    }
+    check(){
 
-    checkVERTICAL(){
-        const matrix = {x: 0, y: 1}
-        let row = this.position[0]
-        checkSquares: for (let square of row){          
-                if (square.status != 0)
-                {
-                    let status = square.status
-                    for (let i = 1; i < this.length; i++)
-                    {
-                        let next = this.position[square.y + matrix.y * i][square.x + matrix.x * i]
-                        if (next.status !== square.status){
-                            continue checkSquares
-                        }
+        checkDirections: for (let i = 0; i < 4; i++)
+        {
+            const master = [
+                {x: 0, y: 1}, //Checks veritcal columns
+                {x: 1, y: 0}, //Checks horizontal rows
+                {x: 1, y: 1}, //Checks top-left to bottom-right diagnol
+                {x: 1, y: -1},//Checks bottom-left to top-right diagnol
+            ]
+
+            const nextMatrix = [ //Used so that you can check the multiple rows and columns, however there are only the two individual diagnols
+                {x: 1, y: 0},
+                {x: 0, y: 1},
+                {x: 0, y: 0},
+                {x: 0, y: 0}                
+            ]
+
+            let origin;
+            const matrix = master[i]
+            if (i < 3)  {origin = this.position[0][0]}
+            else        {origin = this.position[this.length-1][0]}
+
+
+            checkMultiples: for (let k = 0; k < this.length; k++){
+                let start = { }
+                const next = nextMatrix[i]  
+                start.x = origin.x + (next.x * k)
+                start.y = origin.y + (next.y * k)   
+                
+                start = this.position[start.y][start.x]
+
+                if (start.status != 0)
+                {                            
+                    checkSquares: for (let j = 1; j < this.length; j++) {
+
+                        let square = this.position[start.y + matrix.y * j][start.x + matrix.x * j]
+                        if (square.status !== start.status){
+                            if (i > 1)  continue checkDirections //Only need to check the diagnols a single time
+                            else        continue checkMultiples
+                        }                    
                     }
                     return true
                 }
-        } 
-        return false
-    }    
-
-
-    checkHORIZONTAL(){
-        const matrix = {x: 1, y: 0}
-        checkRows: for (let row of this.position){
-            let square = row[0]
-                if (square.status != 0)
-                {
-                    let status = square.status
-                    for (let i = 1; i < this.length; i++)
-                    {
-                        let next = this.position[square.y + matrix.y * i][square.x + matrix.x * i]
-                        if (next.status !== square.status){
-                            continue checkRows
-                        }
-                    }
-                    return true
-                }
-        } 
+            }
+        }
         return false
     }
 
-    checkDIAGNOL(){ 
-        const matrix = {x: 1, y: 1}
-        checkRows: for (let row of this.position){
-            let square = row[0]
-                if (square.status != 0)
-                {
-                    let status = square.status
-                    for (let i = 1; i < this.length; i++)
-                    {
-                        let next = this.position[square.y + matrix.y * i][square.x + matrix.x * i]
-                        if (next.status !== square.status){
-                            continue checkRows
-                        }
-                    }
-                    return true
-                }
-        } 
-        return false}     
-    
     respond() {
         let response = {
             result: this.result,
@@ -134,10 +116,6 @@ class Tic_Tac_Toe{
         this.position[square.y][square.x] = reference
 
         this.display()
-
-        //Deprecated until fetch is setup
-        // this.placement()
-
         console.log(this.check())
 
         return this.respond()
@@ -154,10 +132,10 @@ class Tic_Tac_Toe{
         if (!this.active) return
 
         //Return Square {x: x, y: y, status: status}
-        // const placement = await fetchPlacement(this)
-
-        const placement = new Square(2, 3, 'O')
-        this.move(placement)
+        const placement = await fetchPlacement(this)
+        console.log(placement)
+        let select_square = new Square(placement.x, placement.y, 'O')
+        this.move(select_square)
     }
 
     display(){
