@@ -69,10 +69,10 @@ const startGame = async function(event) {
   const options = { sizeX: 15, sizeY: 15, size: 10, dev: false };
   const snake = new Snake(options);
 
-  const reset = function() {
+  const reset = function(score) {
     startSnakeButton.innerHTML = "Replay?";
     startDiv.append(startSnakeButton);
-    sendResult(snake);
+    sendResult(score);
     clearInterval(start);
   };
   const start = setInterval(function() {
@@ -82,12 +82,12 @@ const startGame = async function(event) {
     if (snake.size > snake.X * snake.Y - 1) {
       snake.active === false;
       alert("You've won!");
-      reset();
+      reset(snake.score);
     }
 
     if (!snake.active) {
       alert(snake.termination);
-      reset();
+      reset(snake.score);
     }
   }, speed);
 };
