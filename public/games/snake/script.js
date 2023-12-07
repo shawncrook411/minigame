@@ -33,7 +33,7 @@ window.addEventListener("gamepaddisconnected", (event) => {
   console.log("disconnected");
   controllerIndex = null;
 });
-//listends for controller input in intervals
+//listens for controller input in intervals
 window.addEventListener("gamepadconnected", (event) => {
   controllerIndex = event.gamepad.index;
   console.log("connected");
@@ -60,7 +60,7 @@ window.addEventListener("gamepadconnected", (event) => {
     if (startButton) {
       startGame();
     }
-  }, 100);
+  }, 50);
 });
 
 const startGame = async function(event) {
