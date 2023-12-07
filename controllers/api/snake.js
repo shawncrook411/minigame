@@ -1,5 +1,4 @@
 const router = require("express").Router();
-const Snake = require("../../public/games/snake/game.js");
 const { snakeWeights } = require("../../utils/random");
 const { Score, User } = require("../../models/index.js");
 const withAuth = require("../../public/utils/auth.js");
@@ -35,10 +34,6 @@ router.put("/record", async (req, res) => {
       );
     } else {
       var scoreData = oldScore;
-    }
-    if (!scoreData) {
-      res.status(404).json({ message: "No score found with this id" });
-      return;
     }
     res.status(200).json(scoreData);
   } catch (err) {

@@ -12,7 +12,7 @@ router.get("/", async (req, res) => {
     scores.sort((a, b) => b.snake_wins - a.snake_wins);
     res.render("highscores", {
       scores,
-      loggedIn: req.session.loggedIn,
+      currentUser: req.session.loggedIn,
     });
   } catch (err) {
     res.status(500).json(err);

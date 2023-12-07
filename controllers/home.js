@@ -17,7 +17,10 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/snake", (req, res) => {
-  res.render("snake", { layout: "main" });
+  res.render("snake", {
+    layout: "main",
+    currentUser: req.session.loggedIn,
+  });
 });
 
 router.get("/tic-tac-toe", (req, res) => {
@@ -32,6 +35,15 @@ router.get("/login", (req, res) => {
     return;
   }
   res.render("login");
+});
+
+//SIGNUP
+router.get("/register", (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect("/");
+    return;
+  }
+  res.render("register");
 });
 
 // app.get('/minigames', (req, res) =>

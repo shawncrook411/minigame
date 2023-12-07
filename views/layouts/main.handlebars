@@ -24,7 +24,7 @@
         <li class="nav-item">
           <a class="nav-link" href="/leaderboard">Leaderboard</a>
         </li>
-        {{#if loggedIn}}
+        {{#if currentUser}}
         <li class="nav-item">
           <a class="nav-link" id="logout" href="/">Logout</a>
         </li>
@@ -43,7 +43,7 @@
     <p>&copy; 2023 Super Basic Minigames. All rights reserved.</p>
     <p>Credits: Our Names</p>
 </footer>
-{{#if loggedIn}}
+{{#if currentUser}}
  <script src='/js/logout.js'></script>
 {{/if}}
 </body>
