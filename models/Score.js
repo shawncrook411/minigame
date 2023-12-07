@@ -17,7 +17,7 @@ Score.init(
     tictactoe_loss: {
       type: DataTypes.INTEGER,
     },
-    snake_win: {
+    snake_wins: {
       type: DataTypes.INTEGER,
     },
     snake_loss: {

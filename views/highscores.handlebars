@@ -10,12 +10,8 @@
                 </tr>
             </thead>
             <tbody>
-                {{#each leaderboardData}}
-                    <tr>
-                        <th scope="row">{{@index}}</th>
-                        <td>{{username}}</td>
-                        <td>{{score}}</td>
-                    </tr>
+                {{#each scores as |score|}}
+                    {{> snakeScores-info score}}
                 {{/each}}
             </tbody>
         </table>
