@@ -1,0 +1,49 @@
+.square {
+    width: 80px;
+    height: 80px;
+    position: relative;
+    background-color: #73B9EE;
+    border: black solid 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* .square::after{      
+    content: attr(data-status);
+    font-size: 75px;
+    color: red;
+  }  */
+
+  #gameDisplay{
+    display: flex;
+    flex-direction: row;    
+}
+
+.column{
+    display: flex;  
+    flex-direction: column
+}
+
+#gameContainer{
+    display: flex;
+    justify-content: center;    
+}
+
+#mainContainer{
+    display: flex;
+    justify-content: center;
+}
+
+.bufferDiv{
+    width: 200px;
+    display:flex;
+}
+
+.redCircle{
+    background-color: red;
+}
+
+.yellowCircle{
+    background-color: yellow;
+}

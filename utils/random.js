@@ -98,4 +98,56 @@ var tic_tac_toe_Weights = function(game){
     return result
 }
 
-module.exports = { snakeWeights, tic_tac_toe_Weights }
+var connect4Weights = function(game){
+    position = game.position
+    
+    let weights = []
+    let indexes = []
+    let height = game.height
+    let width = game.width
+
+    let x = 0
+    for (let column of position){
+        x++
+
+        let y = 0;
+        for (let square of column)
+        {
+            y++
+            //Default weight
+            let weight = 1
+
+            //Skips squares that have already been played
+            if (square.status != 0) continue
+
+
+            const CENTER_WEIGHT = 3
+
+            if (square.x !== 0 && square.x !== width-1 && square.y !== 0 && square.y !== height-1){
+                weight = 0
+            }
+
+            //If length is even
+            if (!width % 2){
+                //If in center column 
+                if (square.x === width/2){
+                    weight = CENTER_WEIGHT
+                }                    
+            }
+            else{
+                if (square.x === Math.floor(width/2)){
+                    weight = CENTER_WEIGHT
+                }                               
+            }
+
+            weight = weight * square.y
+
+            weights.push(weight)
+            indexes.push({x: x-1, y: y-1})
+        }
+    }
+    let result = weighted.select(indexes, weights)
+    return result
+}
+
+module.exports = { snakeWeights, tic_tac_toe_Weights, connect4Weights }
