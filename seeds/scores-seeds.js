@@ -13,7 +13,7 @@ const scoreData = [
   {
     tictactoe_win: 3,
     tictactoe_loss: 7,
-    snake_wins: 2,
+    snake_wins: 8,
     snake_loss: 0,
     connect4_win: 8,
     connect4_loss: 3,
