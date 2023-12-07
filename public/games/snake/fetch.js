@@ -25,14 +25,15 @@ var fetchApple = async function(snake) {
   return apple;
 };
 
-var sendResult = async function(snake) {
-  console.log(snake);
+var sendResult = async function(score) {
   const data = await fetch("/api/snake/record", {
     method: "PUT",
+    body: JSON.stringify({
+      snake_score: score,
+    }),
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(snake),
   });
   if (data.ok) {
     return;

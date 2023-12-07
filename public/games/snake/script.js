@@ -1,5 +1,5 @@
 let direction = 2; //STARTING DIRECTION -> RIGHT
-let speed = 50; //CURRENT SPEED , MAY BE CHANGED (10 fps)
+let speed = 100; //CURRENT SPEED , MAY BE CHANGED (10 fps)
 
 let controllerIndex = null;
 let leftPressed = false;
@@ -71,10 +71,13 @@ const startGame = async function(event) {
 
   const reset = function(score) {
     startSnakeButton.innerHTML = "Replay?";
+    let board = document.getElementById("snakeDisplay");
+    while (board.firstChild) board.removeChild(board.firstChild);
     startDiv.append(startSnakeButton);
     sendResult(score);
     clearInterval(start);
   };
+
   const start = setInterval(function() {
     //Master loop
     snake.move(direction);

@@ -24,22 +24,23 @@ router.put("/record", async (req, res) => {
       },
     });
     if (!oldScore) {
-      await Score.create({
+      const newScore = await Score.create({
         user_id: req.session.user_id,
         snake_score: req.body.snake_score,
       });
-    } else if(oldScore.snake_score < req.body.snake_score) {
-        var scoreData = await Score.update(
-          {
-            snake_score: req.body.snake_score,
-          },
-          {
-            where: { user_id: req.session.user_id },
-          }
-        );
-      } else {
-        var scoreData = oldScore;
-      }
+      console.log(newScore);
+      var scoreData = newScore;
+    } else if (oldScore.snake_score < req.body.snake_score) {
+      var scoreData = await Score.update(
+        {
+          snake_score: req.body.snake_score,
+        },
+        {
+          where: { user_id: req.session.user_id },
+        }
+      );
+    } else {
+      var scoreData = oldScore;
     }
     res.status(200).json(scoreData);
   } catch (err) {
