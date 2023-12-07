@@ -9,6 +9,7 @@
 } */
 
 
+
 .square, .snake, .apple, .head{
     width: 40px;
     height: 40px;    
@@ -55,9 +56,27 @@
     display:flex;
   }
   
-  #snakeStart{
+  #snakeStart {
     height: 50px;
-  }
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #4CAF50; /* Green background color */
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 200px 0px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Add a smooth transition effect */
+}
+
+#snakeStart:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
 
   .vertical_snake{
     border-right: black solid 3px;
