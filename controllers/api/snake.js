@@ -22,15 +22,14 @@ router.put("/record", async (req, res) => {
         user_id: req.session.user_id,
       },
     });
-    if (!oldScore){
+    if (!oldScore) {
       const newScore = await Score.create({
         user_id: req.session.user_id,
-        snake_score: req.body.snake_score
-      })
-      console.log(newScore)
-      var scoreData = newScore
-    }
-    else if (oldScore.snake_score < req.body.snake_score) {
+        snake_score: req.body.snake_score,
+      });
+      console.log(newScore);
+      var scoreData = newScore;
+    } else if (oldScore.snake_score < req.body.snake_score) {
       var scoreData = await Score.update(
         {
           snake_score: req.body.snake_score,

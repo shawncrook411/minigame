@@ -26,14 +26,14 @@ var fetchApple = async function(snake) {
 };
 
 var sendResult = async function(score) {
-const data = await fetch("/api/snake/record", {
+  const data = await fetch("/api/snake/record", {
     method: "PUT",
     body: JSON.stringify({
       snake_score: score,
     }),
     headers: {
       "Content-Type": "application/json",
-    }
+    },
   });
   if (data.ok) {
     return;
