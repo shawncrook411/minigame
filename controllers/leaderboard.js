@@ -9,7 +9,7 @@ router.get("/", async (req, res) => {
     });
     const scores = scoreData.map((score) => score.get({ plain: true }));
     //sorts by wins before sending to handlebars
-    scores.sort((a, b) => b.snake_wins - a.snake_wins);
+    scores.sort((a, b) => b.snake_score - a.snake_score);
     res.render("highscores", {
       scores,
       currentUser: req.session.loggedIn,
