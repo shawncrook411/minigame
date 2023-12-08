@@ -1,5 +1,5 @@
 let direction = 2; //STARTING DIRECTION -> RIGHT
-let speed = 100; //CURRENT SPEED , MAY BE CHANGED (10 fps)
+let speed = 75; //CURRENT SPEED , MAY BE CHANGED (10 fps)
 
 let controllerIndex = null;
 let leftPressed = false;
