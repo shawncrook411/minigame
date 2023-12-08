@@ -1,9 +1,16 @@
+html {
+  height: 100%;
+}
+
 body {
   font-family: "Roboto", sans-serif;
   margin: 0;
   padding: 0;
   background-color: #f8f9fa;
   color: #343a40;
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: 1fr auto;
 }
 
 header {
@@ -11,6 +18,7 @@ header {
   color: #fff;
   padding: 1em;
   text-align: center;
+  max-height: 95px;
 }
 
 h1 {
@@ -79,7 +87,7 @@ a {
 }
 
 a:hover {
-  color: #1d2124; 
+  color: #1d2124;
   text-decoration: underline;
 }
 
@@ -131,7 +139,6 @@ footer {
   color: #fff;
   padding: 1em;
   text-align: center;
-  position: fixed;
   bottom: 0;
   width: 100%;
 }
@@ -143,4 +150,16 @@ footer {
 
 #topNavigation a {
   margin-left: 10px;
+}
+
+.content-center {
+  justify-content: center;
+}
+
+.content-center .card {
+  margin: 10px;
+}
+
+.content-center .card img {
+  height: 270px;
 }

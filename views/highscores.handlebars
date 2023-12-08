@@ -1,10 +1,10 @@
-<body>
+<main>
     <div class="container mt-5">
-        <h2 class="mb-4">Leaderboard</h2>
+        <h2 class="mb-4">Snake</h2>
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">#</th>
+                    <th scope="col">Rank</th>
                     <th scope="col">Username</th>
                     <th scope="col">Score</th>
                 </tr>
@@ -16,4 +16,40 @@
             </tbody>
         </table>
     </div>
-</body>
+        <div class="container mt-5">
+            <h2 class="mb-4">TicTacToe</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Rank</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Win</th>
+                        <th scope="col">Loss</th>
+                    </tr>
+            </thead>
+            <tbody>
+                {{#each scores as |score|}}
+                        {{> tictactoe-info score}}
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+        <div class="container mt-5">
+            <h2 class="mb-4">Connect-4</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Rank</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Win</th>
+                        <th scope="col">Loss</th>
+                    </tr>
+                </thead>
+            <tbody>
+                {{#each scores as |score|}}
+                    {{> connect4-info score}}
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</main>
