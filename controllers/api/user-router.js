@@ -26,15 +26,14 @@ router.post("/login", async (req, res) => {
     }
     //if valid saves session key as logged in
     req.session.save(() => {
-      req.session.user_id = userData.id
-      req.session.username = userData.username
-      req.session.loggedIn = true
+      req.session.user_id = userData.id;
+      req.session.username = userData.username;
+      req.session.loggedIn = true;
       res
         .status(200)
         .json({ user: userData, message: "You are now logged in!" });
     });
   } catch (err) {
-    console.log(err);
     res.status(500).json(err);
   }
 });
@@ -66,7 +65,6 @@ router.post("/", async (req, res) => {
       res.status(200).json(userData);
     });
   } catch (err) {
-    console.log(err);
     res.status(500).json(err);
   }
 });

@@ -25,16 +25,15 @@ class Snake {
     this.display();
   }
 
-  table() {
-    console.table(this.respond().board);
-  }
+  // table() {
+  //   console.table(this.respond().board);
+  // }
 
   terminate(cause) {
     this.active = false;
     this.termination = cause;
-    console.log("FINAL POSITION");
 
-    this.table();
+    //this.table();
     return this.respond();
   }
 
@@ -53,8 +52,7 @@ class Snake {
     this.position[0][0].status = this.size;
 
     if (!this.options.dev) this.seed();
-    console.log("INITIAL POSITION");
-    this.table();
+    //this.table();
   }
 
   //Creates a response object for the GET requests to display the board state:
@@ -94,7 +92,6 @@ class Snake {
       this.direction = direction;
     } else {
       this.previousDirection = this.direction;
-      console.log(`Continued moving ${this.direction}`);
     }
 
     let matrix;
@@ -160,7 +157,6 @@ class Snake {
 
         //Sets the square that the head is moving to the current size
         if (place.x == next.x && place.y == next.y) {
-          console.log(`Successfully moved to: ${check.x - 1}, ${check.y - 1}`);
           place.snake_direction = [this.direction, this.previousDirection];
           place.status = this.size;
         }
@@ -170,8 +166,9 @@ class Snake {
     this.head = check;
     this.display();
 
-    if (this.options.dev) this.table();
-    return this.respond();
+    if (this.options.dev)
+      //this.table();
+      return this.respond();
   }
 
   seed = async function() {
@@ -181,21 +178,20 @@ class Snake {
     const apple = await fetchApple(this);
     //Sets the status to -1 (indicated it has an apple)
 
-    console.log(`Apple placed at: ${apple.x} , ${apple.y}`);
-
     // -1 adjustment because coord's are 1-indexed while array's are 0-indexed
     this.position[apple.y - 1][apple.x - 1].status = -1;
 
-    if (this.options.dev) this.table();
-    return this.respond();
+    if (this.options.dev)
+      //this.table();
+      return this.respond();
   };
 
   forceSeed(square) {
     this.position[square.y - 1][square.x - 1].status = -1;
-    console.log(`Apple placed at: ${square.x} , ${square.y}`);
 
-    if (this.options.dev) this.table();
-    return this.respond();
+    if (this.options.dev)
+      //this.table();
+      return this.respond();
   }
 
   display() {

@@ -10,7 +10,7 @@ body {
   color: #343a40;
   min-height: 100%;
   display: grid;
-  grid-template-rows: 1fr auto;
+  grid-template-rows: 90px 45em 40px;
 }
 
 header {
@@ -29,6 +29,7 @@ h1 {
 main {
   padding: 1em;
   text-align: center;
+  grid-row: 2/5;
 }
 
 form {
@@ -137,7 +138,7 @@ section {
 footer {
   background-color: #343a40;
   color: #fff;
-  padding: 1em;
+  padding-top: 1em;
   text-align: center;
   bottom: 0;
   width: 100%;
@@ -168,9 +169,9 @@ footer {
   padding: 11em;
 }
 
-.connectstart {
+/* .connectstart {
   padding-bottom: 350px;
-}
+} */
 
 #gameContainer {
   padding-bottom: 200px;

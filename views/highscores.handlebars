@@ -10,7 +10,7 @@
                 </tr>
             </thead>
             <tbody>
-                {{#each scores as |score|}}
+                {{#each snake as |score|}}
                     {{> snakeScores-info score}}
                 {{/each}}
             </tbody>
@@ -28,7 +28,7 @@
                     </tr>
             </thead>
             <tbody>
-                {{#each scores as |score|}}
+                {{#each tictactoe as |score|}}
                         {{> tictactoe-info score}}
                 {{/each}}
             </tbody>
@@ -46,7 +46,7 @@
                     </tr>
                 </thead>
             <tbody>
-                {{#each scores as |score|}}
+                {{#each connect4 as |score|}}
                     {{> connect4-info score}}
                 {{/each}}
             </tbody>
