@@ -17,8 +17,10 @@ router.put("/newApple", (req, res) => {
 
 router.put("/record", async (req, res) => {
   try {
-    if(!req.session.loggedIn) return
-    
+    if(!req.session.loggedIn) {
+      res.status(200).json({message: 'not logged in'})
+    }
+
     const oldScore = await Score.findOne({
       where: {
         user_id: req.session.user_id,
