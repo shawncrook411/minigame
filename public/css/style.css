@@ -13,12 +13,19 @@ header {
   text-align: center;
 }
 
+h1 {
+  text-align: center;
+  color: #343a40;
+}
+
 main {
   padding: 1em;
+  text-align: center;
 }
 
 form {
   display: flex;
+  text-align: center;
   flex-direction: column;
   max-width: 300px;
   margin: auto;
@@ -31,6 +38,8 @@ label {
 input {
   padding: 0.5em;
   margin-bottom: 1em;
+  border: 1px solid #343a40;
+  border-radius: 4px;
 }
 
 button {
@@ -38,15 +47,39 @@ button {
   background-color: #343a40;
   color: #fff;
   cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #1d2124;
+}
+
+p.signup-link {
+  margin-top: 1em;
+  text-align: center;
+}
+
+p.signup-link a {
+  color: #343a40;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+p.signup-link a:hover {
+  text-decoration: underline;
 }
 
 a {
   color: #343a40;
   text-decoration: none;
   font-weight: bold;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
 }
 
 a:hover {
+  color: #1d2124; 
   text-decoration: underline;
 }
 
@@ -111,5 +144,3 @@ footer {
 #topNavigation a {
   margin-left: 10px;
 }
-
-
