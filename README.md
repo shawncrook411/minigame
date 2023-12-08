@@ -61,7 +61,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Snake][product-screenshot]](https://super-basic-minigames-a6389a9aca89.herokuapp.com/)
+![homepage](https://github.com/shawncrook411/minigame/assets/120769113/d332dc6c-6f91-4809-ad90-2632d692005f)
 
 
 
