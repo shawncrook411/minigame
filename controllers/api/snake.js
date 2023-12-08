@@ -17,6 +17,8 @@ router.put("/newApple", (req, res) => {
 
 router.put("/record", async (req, res) => {
   try {
+    if(!req.session.loggedIn) return
+    
     const oldScore = await Score.findOne({
       where: {
         user_id: req.session.user_id,
@@ -27,7 +29,6 @@ router.put("/record", async (req, res) => {
         user_id: req.session.user_id,
         snake_score: req.body.snake_score,
       });
-      console.log(newScore);
       var scoreData = newScore;
     } else if (oldScore.snake_score < req.body.snake_score) {
       var scoreData = await Score.update(
