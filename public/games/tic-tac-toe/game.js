@@ -22,8 +22,7 @@ class Tic_Tac_Toe{
         this.active = false
         this.result = result
         console.log('FINAL POSITION')
-
-        
+        alert(`${this.result} is the Winner!`)        
         return this.respond()
     }
 
@@ -80,7 +79,7 @@ class Tic_Tac_Toe{
                             else        continue checkMultiples
                         }                    
                     }
-                    return true
+                    return start.status
                 }
             }
         }
@@ -168,7 +167,10 @@ class Tic_Tac_Toe{
             }
             board.appendChild(row)
         }
-        // this.check()
+        let status = this.check()
+        if(this.check()){
+            this.terminate(status)
+        }        
     }
     listen(){}    
 }

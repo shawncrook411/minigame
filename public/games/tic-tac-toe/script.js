@@ -18,7 +18,13 @@ const startGame = async function (event) {
         if (!starting) {
             game.placement()
         }
+
+
+
+
     }
+
+    
 
 }
 

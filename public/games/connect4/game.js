@@ -24,6 +24,7 @@ class Connect4{
         this.active = false
         this.result = result
         console.log('FINAL POSITION')
+        alert(`${this.result} is the Winner!`)
 
         return this.respond()
     }
@@ -75,7 +76,7 @@ class Connect4{
                                 continue checkSquares
                             }
                         }
-                        return true
+                        return square.status
                     }
                 }
             }        
@@ -119,7 +120,7 @@ class Connect4{
     submit(square)
     {
         this.move(square)
-        this.placement()
+        if(this.active) this.placement()
         this.display()
     }
 
@@ -160,6 +161,10 @@ class Connect4{
                 column.appendChild(square)
             }        
             board.appendChild(column)
+        }
+        let status = this.check()
+        if (status){
+            this.terminate(status)
         }
     }
     listen(){}
