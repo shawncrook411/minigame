@@ -18,14 +18,7 @@ const startGame = async function (event) {
         if (!starting) {
             game.placement()
         }
-
-
-
-
     }
-
-    
-
 }
 
 const startDiv = document.querySelector('#startDiv')

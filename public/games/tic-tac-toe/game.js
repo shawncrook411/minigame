@@ -12,15 +12,19 @@ class Tic_Tac_Toe{
         this.active = true
         this.result = 0
         this.position = []
+        this.moves = 0
         this.dev = options.dev
 
         this.reset()
         this.display()
     }
 
-    terminate(result) {
+    terminate(status) {
         this.active = false
-        this.result = result
+        if (status === "X") this.result = 'Win'
+        if (status === "O") this.result = 'Loss'
+        if (status === 'Draw') this.result = 'Draw'
+
         console.log('FINAL POSITION')
         alert(`${this.result} is the Winner!`)        
         return this.respond()
@@ -83,6 +87,7 @@ class Tic_Tac_Toe{
                 }
             }
         }
+        if (this.moves === this.length*this.length) this.terminate('Draw')
         return false
     }
 
@@ -108,6 +113,7 @@ class Tic_Tac_Toe{
     //Can be used as dev to force place the computer move
     move(square) {
         if (!this.active) return
+        this.moves++
 
         let reference = this.position[square.y][square.x]
         reference.status = square.status
@@ -115,16 +121,22 @@ class Tic_Tac_Toe{
         this.position[square.y][square.x] = reference
 
         this.display()
-        console.log(this.check())
-
         return this.respond()
     }
 
     submit(square)
     {
         this.move(square)
-        this.placement()
         this.display()
+        let status = this.check()
+        if(status){
+            this.terminate(status)
+        }  
+        this.placement()
+        status = this.check()
+        if(status){
+            this.terminate(status)
+        }
     }
 
     placement = async function() {
@@ -166,11 +178,7 @@ class Tic_Tac_Toe{
                 row.appendChild(square)
             }
             board.appendChild(row)
-        }
-        let status = this.check()
-        if(this.check()){
-            this.terminate(status)
-        }        
+        }      
     }
     listen(){}    
 }
