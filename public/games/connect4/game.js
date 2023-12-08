@@ -15,17 +15,20 @@ class Connect4{
         this.position = []
         this.winSize = 4
         this.dev = options.dev
+        this.moves = 0
 
         this.reset()
         this.display()
     }
 
-    terminate(result) {
+    terminate(status) {
         this.active = false
-        this.result = result
+        if (status === "Red") this.result = 'Win'
+        if (status === "Yellow") this.result = 'Loss'
+        if (status === 'Draw') this.result = 'Draw'
         console.log('FINAL POSITION')
         alert(`${this.result} is the Winner!`)
-
+        sendResult(this.result)
         return this.respond()
     }
 
@@ -106,13 +109,13 @@ class Connect4{
     //Square {x: , y: n/a, status: status}
     move(input){
         if (!this.active) return
+        this.moves++
 
         for (let square of this.position[input.x]){
             if (square.status != 0) continue
             square.status = input.status
 
             this.display()
-            console.log(this.check())
             return this.respond()
         }
     }
@@ -166,6 +169,8 @@ class Connect4{
         if (status){
             this.terminate(status)
         }
+
+        if (this.moves === this.width * this.height) this.terminate('Draw')
     }
     listen(){}
 }
