@@ -19,6 +19,7 @@ router.put("/record", async (req, res) => {
   try {
     if(!req.session.loggedIn) {
       res.status(200).json({message: 'not logged in'})
+      return
     }
 
     const oldScore = await Score.findOne({
