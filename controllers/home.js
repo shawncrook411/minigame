@@ -24,15 +24,18 @@ router.get("/snake", (req, res) => {
 });
 
 router.get("/tic-tac-toe", (req, res) => {
-  res.render("tic-tac-toe", { layout: "main" });
+  res.render("tic-tac-toe", {
+    layout: "main",
+    currentUser: req.session.username,
+  });
 });
 
 router.get("/connect4", (req, res) => {
-  res.render("connect4", { 
+  res.render("connect4", {
     layout: "main",
-   })
+    currentUser: req.session.username,
+  });
 });
-
 
 router.get("/login", (req, res) => {
   if (req.session.loggedIn) {
