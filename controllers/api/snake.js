@@ -17,10 +17,10 @@ router.put("/newApple", (req, res) => {
 
 router.put("/record", async (req, res) => {
   try {
-    if(!req.session.loggedIn) {
+    if(!req.session.loggedIn || !req.session.user_id) {
       res.status(200).json({message: 'not logged in'})
       return
-    }
+    }    
 
     const oldScore = await Score.findOne({
       where: {
@@ -50,4 +50,5 @@ router.put("/record", async (req, res) => {
     res.status(500).json(err);
   }
 });
-module.exports = router;
+
+    module.exports = router;
