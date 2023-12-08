@@ -1,5 +1,5 @@
-<link rel="stylesheet" type="text/css" href="/public/css/style.css">
-<main>
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<main class="mainHome">
     <p>Welcome to Super Basic Minigames - Your Ultimate Gaming Experience!</p>
 
     {{#if currentUser}}
@@ -17,5 +17,37 @@
         <p class="signup-link">Need to sign up? <a href="/register">Signup!</a></p>
         <script src="/js/login.js"></script>
     {{/if}}
+    <section class="row content-center">
+       <div class="card" style="width: 18rem;">
+               <a href="/snake">
+  <img src="/assets/snake.PNG" class="card-img-top" alt="Snake Game">
+  <div class="card-body">
+    <p class="card-text">Snake</p>
+  </div>
+         </a>
+</div>
 
+
+
+<div class="card" style="width: 18rem;">
+    <a href="/tic-tac-toe">
+  <img src="/assets/tictactoe.PNG" class="card-img-top" alt="TicTacToe">
+  <div class="card-body">
+    <p class="card-text">TicTacToe</p>
+  </div>
+  </a>
+</div>
+
+
+
+<div class="card" style="width: 18rem;">
+    <a href="/connect4">
+  <img src="/assets/connect4.PNG" class="card-img-top" alt="connect4">
+  <div class="card-body">
+    <p class="card-text">Connect-4</p>
+  </div>
+  </a>
+</div> 
+
+    </section>
 </main>
