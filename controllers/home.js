@@ -3,16 +3,12 @@ const router = require("express").Router();
 
 // GET ROUTES
 router.get("/", async (req, res) => {
-  try {
-    if (req.session.username) {
-      res.render("homepage", {
-        currentUser: req.session.username,
-      });
-    } else {
-      res.render("homepage");
-    }
-  } catch (err) {
-    console.log(err);
+  if (req.session.username) {
+    res.render("homepage", {
+      currentUser: req.session.username,
+    });
+  } else {
+    res.render("homepage");
   }
 });
 
